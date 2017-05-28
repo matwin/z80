@@ -1065,8 +1065,7 @@ namespace z80
                     {
                         var a = registers[A];
                         var c = (byte)((a & 0x80) >> 7);
-                        a <<= 1;
-                        registers[A] = a;
+                        registers[A] = (byte)((a << 1) | (a >> 7));
                         registers[F] &= (byte)~(Fl.H | Fl.N | Fl.C);
                         registers[F] |= c;
 #if (DEBUG)
